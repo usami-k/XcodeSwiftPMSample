@@ -13,27 +13,22 @@ let package = Package(
     dependencies: [
         // Local Packages
         .package(path: "../Core"),
+        // Plugins
+        .package(url: "https://github.com/usami-k/SwiftLintPlugin", branch: "main"),
     ],
     targets: [
-        // https://github.com/juozasvalancius/ExampleSPMProjectWithSwiftLint
-        .binaryTarget(
-            name: "SwiftLintBinary",
-            url: "https://github.com/juozasvalancius/SwiftLint/releases/download/spm-accommodation/SwiftLintBinary-macos.artifactbundle.zip",
-            checksum: "cdc36c26225fba80efc3ac2e67c2e3c3f54937145869ea5dbcaa234e57fc3724"
-        ),
-        .plugin(
-            name: "SwiftLintXcode",
-            capability: .buildTool(),
-            dependencies: ["SwiftLintBinary"]
-        ),
         .target(
             name: "AppFeature",
             dependencies: [
-                "Core"
+                "Core",
             ],
-            plugins: ["SwiftLintXcode"]),
+            plugins: [
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLintPlugin"),
+            ]
+        ),
         .testTarget(
             name: "AppFeatureTests",
-            dependencies: ["AppFeature"]),
+            dependencies: ["AppFeature"]
+        ),
     ]
 )
