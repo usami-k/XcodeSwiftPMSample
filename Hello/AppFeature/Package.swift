@@ -15,11 +15,10 @@ let package = Package(
         .package(path: "../Core"),
     ],
     targets: [
-        // https://github.com/juozasvalancius/ExampleSPMProjectWithSwiftLint
         .binaryTarget(
             name: "SwiftLintBinary",
-            url: "https://github.com/juozasvalancius/SwiftLint/releases/download/spm-accommodation/SwiftLintBinary-macos.artifactbundle.zip",
-            checksum: "cdc36c26225fba80efc3ac2e67c2e3c3f54937145869ea5dbcaa234e57fc3724"
+            url: "https://github.com/realm/SwiftLint/releases/download/0.48.0/SwiftLintBinary-macos.artifactbundle.zip",
+            checksum: "9c255e797260054296f9e4e4cd7e1339a15093d75f7c4227b9568d63edddba50"
         ),
         .plugin(
             name: "SwiftLintXcode",
